@@ -1,0 +1,9 @@
+{
+  "name": "Pawify Music",
+  "short_name": "Pawify",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0811",
+  "theme_color": "#120d20",
+  "description": "A free, ad-free music player for freely available audio and your own music."
+}

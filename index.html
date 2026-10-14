@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#120d20">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pawify">
+<link rel="manifest" href="manifest.json">
+<title>Pawify • Music</title>
+<style>
+:root{--bg:#0b0811;--panel:#171123;--panel2:#211631;--purple:#a879ff;--pink:#efb7ff;--muted:#b9adc9;--text:#faf7ff;--line:#302340}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#24143b 0%,var(--bg) 48%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;padding-bottom:150px}
+header{padding:22px 18px 12px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#0b0811eF;backdrop-filter:blur(18px);z-index:3;border-bottom:1px solid #ffffff0d}
+.brand{font-size:25px;font-weight:850;letter-spacing:-.8px}.brand span{color:var(--purple)}.paw{font-size:23px;margin-right:7px}
+.small{color:var(--muted);font-size:12px}.tabs{display:flex;gap:8px;padding:12px 16px;overflow:auto}.tab,.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:10px 14px;font-weight:650;white-space:nowrap}.tab.active,.btn.primary{background:var(--purple);color:#180e27;border-color:transparent}
+main{padding:0 16px;max-width:760px;margin:auto}.hero{background:linear-gradient(135deg,#352050,#171123 70%);border:1px solid #ffffff12;border-radius:22px;padding:19px;margin:4px 0 18px}.hero h1{font-size:24px;margin:0 0 8px}.hero p{color:#d5c8e8;line-height:1.45;margin:0 0 14px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:20px 2px 10px}.sectionhead h2{font-size:18px;margin:0}.searchrow{display:flex;gap:8px;margin-bottom:12px}input[type=search],input[type=text]{width:100%;min-width:0;background:#130d1d;border:1px solid var(--line);border-radius:13px;color:var(--text);padding:13px;font-size:15px;outline:none}input:focus{border-color:var(--purple)}.hint{color:var(--muted);font-size:12px;line-height:1.5}.list{display:grid;gap:9px}.track{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid #ffffff0a;padding:11px;border-radius:15px}.cover{width:48px;height:48px;flex:0 0 48px;border-radius:12px;background:linear-gradient(135deg,#8d5ad5,#2c1a43);display:grid;place-items:center;font-size:22px}.trackinfo{min-width:0;flex:1}.tracktitle{font-weight:700;overflow-wrap:anywhere}.tracksub{font-size:12px;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}.iconbtn{border:0;background:#2b1d3d;color:white;border-radius:11px;padding:10px;font-size:16px}.iconbtn:active,.btn:active{transform:scale(.98)}.empty{padding:22px;text-align:center;color:var(--muted);background:#ffffff05;border:1px dashed var(--line);border-radius:16px;line-height:1.5}.filebox{border:1px dashed #60467d;border-radius:16px;padding:16px;background:#ffffff04}.filebox input{margin-top:10px;width:100%;color:var(--muted)}.bottom{position:fixed;bottom:0;left:0;right:0;background:#100b19f5;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:5;backdrop-filter:blur(18px)}.now{display:flex;align-items:center;gap:10px;max-width:760px;margin:auto}.nowmeta{min-width:0;flex:1}.nowtitle{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.controls{display:flex;align-items:center;gap:9px}.play{width:42px;height:42px;border:0;border-radius:50%;background:var(--purple);color:#180e27;font-size:18px;font-weight:900}.seek{max-width:760px;margin:8px auto 0;display:flex;align-items:center;gap:8px;color:var(--muted);font-size:10px}.seek input{width:100%;accent-color:var(--purple)}.toast{position:fixed;top:82px;left:50%;transform:translateX(-50%);background:#302044;padding:11px 15px;border-radius:12px;z-index:10;display:none;max-width:90%;font-size:13px;box-shadow:0 8px 30px #0008}.hidden{display:none!important}
+</style>
+</head>
+<body>
+<header><div class="brand"><span class="paw">🐾</span>Paw<span>ify</span><div class="small">your music nook</div></div><div class="small">FREE • NO ADS IN THIS APP</div></header>
+<nav class="tabs">
+<button class="tab active" data-view="discover">Discover</button><button class="tab" data-view="library">My Library</button><button class="tab" data-view="offline">Offline</button>
+</nav>
+<main>
+<section class="hero">
+<h1>Little paws, big playlists. 🐈‍⬛</h1>
+<p>Search freely available audio, keep music you’re allowed to download, or add your own tracks for offline listening.</p>
+<div class="hint">Pawify is an independent player, not Spotify. Catalogue availability and download permissions depend on each track.</div>
+</section>
+<section id="discover">
+<div class="sectionhead"><h2>Find music</h2></div>
+<form class="searchrow" id="searchForm"><input id="query" type="search" placeholder="Search artist, genre, or track…" autocomplete="off"><button class="btn primary" type="submit">Search</button></form>
+<div class="hint" style="margin-bottom:12px">Online results come from Internet Archive audio items. Some are recordings, podcasts, or live sets rather than commercial songs.</div>
+<div id="results" class="list"><div class="empty">Search for something to get the tunes rolling. 🎶</div></div>
+</section>
+<section id="library" class="hidden">
+<div class="sectionhead"><h2>My Library</h2><span class="small" id="localCount">0 saved</span></div>
+<div class="filebox"><strong>Add music from your iPhone</strong><div class="hint">Choose audio files you own or have permission to use. Pawify stores them on this device for offline playback.</div><input id="filePicker" type="file" accept="audio/*" multiple></div>
+<div class="sectionhead"><h2>Saved tracks</h2></div><div id="savedList" class="list"><div class="empty">Your library is waiting for its first song.</div></div>
+</section>
+<section id="offline" class="hidden">
+<div class="sectionhead"><h2>Offline downloads</h2><span class="small" id="offlineCount">0 saved</span></div>
+<p class="hint">Tracks downloaded through Pawify are stored in this browser on this device. Keep the app’s website data intact so they remain available.</p>
+<div id="offlineList" class="list"><div class="empty">No offline tracks yet. Use the download button on eligible online tracks, or add local audio in My Library.</div></div>
+</section>
+</main>
+<div id="toast" class="toast"></div>
+<div class="bottom">
+<div class="now"><div class="cover" id="nowCover">🐾</div><div class="nowmeta"><div class="nowtitle" id="nowTitle">Nothing playing yet</div><div class="tracksub" id="nowArtist">Pick a tune, nya~</div></div><div class="controls"><button class="iconbtn" id="prevBtn" aria-label="Previous">⏮</button><button class="play" id="playBtn" aria-label="Play">▶</button><button class="iconbtn" id="nextBtn" aria-label="Next">⏭</button></div></div>
+<div class="seek"><span id="elapsed">0:00</span><input type="range" id="seekBar" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+<audio id="audio" preload="metadata" playsinline></audio>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const audio=$("#audio");
+let current=null, queue=[], queueIndex=0, saved=[], offlineIds=new Set(), blobUrls=[];
+const DB_NAME="pawify-db", STORE="tracks";
+function toast(msg){const t=$("#toast");t.textContent=msg;t.style.display="block";clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.style.display="none",2600)}
+function fmt(n){if(!Number.isFinite(n))return "0:00";return Math.floor(n/60)+":"+String(Math.floor(n%60)).padStart(2,"0")}
+function dbOpen(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>r.result.createObjectStore(STORE,{keyPath:"id"});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function dbPut(item){const db=await dbOpen();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,"readwrite");tx.objectStore(STORE).put(item);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)})}
+async function dbAll(){const db=await dbOpen();return new Promise((resolve,reject)=>{const r=db.transaction(STORE).objectStore(STORE).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function dbDelete(id){const db=await dbOpen();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,"readwrite");tx.objectStore(STORE).delete(id);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
+function renderTracks(container,items,mode){container.innerHTML="";if(!items.length){container.innerHTML='<div class="empty">Nothing here yet. Your future playlist is judging us gently. 🐱</div>';return}
+items.forEach((t,i)=>{const row=document.createElement("div");row.className="track";const cover=document.createElement("div");cover.className="cover";cover.textContent="🎵";const info=document.createElement("div");info.className="trackinfo";const title=document.createElement("div");title.className="tracktitle";title.textContent=t.title||"Untitled audio";const sub=document.createElement("div");sub.className="tracksub";sub.textContent=t.artist||"Unknown artist";info.append(title,sub);const play=document.createElement("button");play.className="iconbtn";play.textContent="▶";play.setAttribute("aria-label","Play "+title.textContent);play.onclick=()=>{queue=items;queueIndex=i;playTrack(t)};row.append(cover,info,play);
+if(mode==="online"){const dl=document.createElement("button");dl.className="iconbtn";dl.textContent="↓";dl.title="Save for offline";dl.onclick=()=>downloadOnline(t);row.append(dl)}
+if(mode==="saved"){const del=document.createElement("button");del.className="iconbtn";del.textContent="×";del.title="Remove saved track";del.onclick=async()=>{await dbDelete(t.id);await refreshSaved();toast("Removed from this device")};row.append(del)}
+container.append(row)})}
+async function refreshSaved(){const all=await dbAll();saved=all.map(x=>({...x,src:x.blob?URL.createObjectURL(x.blob):x.src}));$("#localCount").textContent=saved.length+" saved";$("#offlineCount").textContent=saved.length+" saved";renderTracks($("#savedList"),saved,"saved");renderTracks($("#offlineList"),saved,"saved")}
+function setNow(t){$("#nowTitle").textContent=t.title||"Untitled audio";$("#nowArtist").textContent=t.artist||"Pawify player";$("#nowCover").textContent="🎵";$("#playBtn").textContent="⏸"}
+async function playTrack(t){try{current=t;setNow(t);audio.src=t.src;await audio.play()}catch(e){toast("Could not play this track. Check your connection or file format.")}}
+async function downloadOnline(t){try{toast("Saving track for offline…");const response=await fetch(t.src);if(!response.ok)throw new Error("Download failed");const blob=await response.blob();if(!blob.type.startsWith("audio/") && !/audio|mpeg|ogg|wav|flac/i.test(t.src))throw new Error("Not audio");await dbPut({id:t.id,title:t.title,artist:t.artist,blob,src:"",savedAt:Date.now()});await refreshSaved();toast("Saved offline 🐾")}catch(e){toast("This source blocks downloads or the track isn't downloadable. Try another track or add a local file.")}}
+$("#searchForm").addEventListener("submit",async e=>{e.preventDefault();const q=$("#query").value.trim();if(!q)return;const out=$("#results");out.innerHTML='<div class="empty">Sniffing out tunes… 🐈‍⬛</div>';try{const url="https://archive.org/advancedsearch.php?q="+encodeURIComponent('mediatype:audio AND ('+q+')')+"&fl[]=identifier,title,creator&sort[]=downloads+desc&rows=18&page=1&output=json";const r=await fetch(url);if(!r.ok)throw new Error("Search unavailable");const data=await r.json();const docs=data.response?.docs||[];const items=[];for(const d of docs){if(!d.identifier)continue;try{const mr=await fetch("https://archive.org/metadata/"+encodeURIComponent(d.identifier));const md=await mr.json();const files=(md.files||[]).filter(f=>f.name&&!f.name.includes("__ia_thumb")&&(/\.(mp3|ogg|oga|wav|m4a|flac)$/i.test(f.name))&&!f.source?.includes("derivative"));files.sort((a,b)=>((b.format||"").includes("MP3")?1:0)-((a.format||"").includes("MP3")?1:0));if(!files.length)continue;const f=files[0];items.push({id:"ia-"+d.identifier+"-"+f.name,title:Array.isArray(d.title)?d.title[0]:d.title||f.name,artist:Array.isArray(d.creator)?d.creator.join(", "):d.creator||"Internet Archive audio",src:"https://archive.org/download/"+encodeURIComponent(d.identifier)+"/"+f.name,identifier:d.identifier})}catch(_){}}renderTracks(out,items,"online");if(!items.length)out.innerHTML='<div class="empty">No playable audio found. Try a different search phrase.</div>'}catch(err){out.innerHTML='<div class="empty">Could not reach the music catalogue. Check your internet connection and try again.</div>'}});
+$("#filePicker").addEventListener("change",async e=>{for(const f of Array.from(e.target.files||[])){const id="local-"+Date.now()+"-"+Math.random().toString(36).slice(2);await dbPut({id,title:f.name.replace(/\.[^.]+$/,""),artist:"On this iPhone",blob:f,src:"",savedAt:Date.now()})}await refreshSaved();toast("Added to your library 🎶");e.target.value=""});
+$("#playBtn").onclick=async()=>{if(!current){if(saved.length){queue=saved;queueIndex=0;await playTrack(saved[0])}else{toast("Choose a track first, nya~")}return}if(audio.paused){try{await audio.play();$("#playBtn").textContent="⏸"}catch(_){toast("Tap play again to start audio")}}else{audio.pause();$("#playBtn").textContent="▶"}};
+$("#prevBtn").onclick=()=>{if(queue.length) {queueIndex=(queueIndex-1+queue.length)%queue.length;playTrack(queue[queueIndex])}};
+$("#nextBtn").onclick=()=>{if(queue.length) {queueIndex=(queueIndex+1)%queue.length;playTrack(queue[queueIndex])}};
+audio.addEventListener("ended",()=>{if(queue.length){queueIndex=(queueIndex+1)%queue.length;playTrack(queue[queueIndex])}else $("#playBtn").textContent="▶"});
+audio.addEventListener("timeupdate",()=>{$("#elapsed").textContent=fmt(audio.currentTime);$("#duration").textContent=fmt(audio.duration);if(Number.isFinite(audio.duration))$("#seekBar").value=audio.currentTime/audio.duration*100});
+$("#seekBar").addEventListener("input",()=>{if(Number.isFinite(audio.duration))audio.currentTime=(Number($("#seekBar").value)/100)*audio.duration});
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));["discover","library","offline"].forEach(id=>$("#"+id).classList.toggle("hidden",id!==b.dataset.view))});
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+refreshSaved().catch(()=>toast("Local storage isn't available in this browser."));
+</script>
+</body>
+</html>
